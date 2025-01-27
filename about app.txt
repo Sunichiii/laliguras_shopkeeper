@@ -1,0 +1,80 @@
+lib
+core: Contains shared utilities, constants, and reusable assets.
+constants/ – App-wide constants (e.g., colors, styles).
+utils/ – Helper functions (e.g., validation, date formatting).
+widgets/ – Reusable custom widgets.
+features: Separated by app features/modules.
+authentication/
+data/ – Data sources and models related to authentication.
+domain/ – Business logic (e.g., use cases).
+presentation/ – UI layer (screens, providers).
+profile/
+data/
+domain/
+presentation/
+orders/
+data/
+domain/
+presentation/
+inventory/
+data/
+domain/
+presentation/
+bulk_orders/
+data/
+domain/
+presentation/
+delivery/
+data/
+domain/
+presentation/
+data: Global data-related files (if applicable).
+network/ – API clients and network utilities.
+models/ – Shared data models.
+state_management: Providers for app-wide state.
+Separate providers for user authentication, orders, inventory, etc.
+Custom Widgets
+Shared/Reusable Widgets
+CustomButton: A reusable button widget with support for different styles and loading states.
+CustomTextField: A text input widget with validation and custom styling.
+LoadingIndicator: A circular progress indicator for asynchronous tasks.
+EmptyState: A widget to display when no data is available.
+ErrorState: A widget for displaying error messages.
+ListTileWithIcon: A list tile widget with an icon, title, and optional trailing button.
+Authentication Widgets
+AuthHeader: Header for login and signup screens with app branding.
+LoginForm: Widget containing the email and password input fields.
+ForgotPasswordForm: A form for resetting passwords.
+Profile Widgets
+ProfileAvatarPicker: Widget for displaying and selecting a profile picture.
+EditableProfileForm: Form for editing profile details.
+Orders Widgets
+OrderCard: Card widget for displaying order information.
+OrderStatusStepper: Stepper widget to show order progress (confirmed, picking, delivery).
+OrderFilters: Dropdown or chip-based filters for sorting orders.
+Inventory Widgets
+ProductCard: Widget for displaying a product’s details (name, price, image).
+AddProductForm: A form for adding new products to the inventory.
+Bulk Orders Widgets
+BulkOrderCard: Card widget to display bulk order promotions.
+QuantitySelector: A widget for selecting product quantities.
+DiscountBadge: Badge widget to highlight discounts.
+Delivery Widgets
+DeliveryRequestCard: Widget for showing delivery requests.
+DeliveryStatusStepper: Stepper widget to display delivery stages.
+MapButton: A button widget with a map icon for viewing delivery routes.
+Provider Setup
+AuthenticationProvider: Manages user login, logout, and token management.
+ProfileProvider: Handles profile data retrieval and updates.
+OrderProvider: Manages order data, including status updates.
+InventoryProvider: Manages inventory items (add, edit, delete).
+BulkOrderProvider: Handles bulk order promotions and management.
+DeliveryProvider: Manages delivery requests and status updates.
+This structure ensures scalability, maintainability, and separation of concerns while allowing for easy testing and feature additions. Let me know if you need implementation for any specific module or widget!
+
+
+
+
+
+
+
