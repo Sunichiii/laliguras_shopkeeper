@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../constants/colors.dart';
 
 
 class PrimaryNavbar extends StatelessWidget {
-  const PrimaryNavbar({Key? key}) : super(key: key);
+  const PrimaryNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {
