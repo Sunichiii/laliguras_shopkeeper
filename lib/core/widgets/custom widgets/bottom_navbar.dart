@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopkeeper_part/providers/navigation_provider.dart';
 import '../../constants/colors.dart';
 
 
-class PrimaryNavbar extends StatelessWidget {
-  const PrimaryNavbar({super.key});
+class BottomNavbar extends StatelessWidget {
+  const BottomNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //final navigationProvider = Provider.of<NavigationProvider>(context);
+    final navigationProvider = Provider.of<NavigationProvider>(context);
 
     return BottomNavigationBar(
       currentIndex: navigationProvider.currentIndex,
@@ -20,13 +21,16 @@ class PrimaryNavbar extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/home');
             break;
           case 1:
-            Navigator.pushReplacementNamed(context, '/pick');
+            Navigator.pushReplacementNamed(context, '/favourite');
             break;
           case 2:
             Navigator.pushReplacementNamed(context, '/search');
             break;
           case 3:
             Navigator.pushReplacementNamed(context, '/profile');
+            break;
+          case 4:
+            Navigator.pushReplacementNamed(context, '/bulk');
             break;
         }
       },
@@ -53,7 +57,7 @@ class PrimaryNavbar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.inventory_2_outlined),
-          label: 'Package',
+          label: 'bulk',
         ),
       ],
     );

@@ -25,10 +25,10 @@ class SecondaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         title,
-        style: Theme.of(context).textTheme.titleMedium,
+        style: Theme.of(context).textTheme.titleLarge,
       ),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1.0),
+      bottom: const PreferredSize(
+        preferredSize: Size.fromHeight(1.0),
         child: Divider(color: AppColors.grey, height: 1),
       ),
     );

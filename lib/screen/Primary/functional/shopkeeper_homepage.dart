@@ -1,20 +1,80 @@
 import 'package:flutter/material.dart';
-import 'package:shopkeeper_part/core/widgets/custom%20widgets/primary_appbar.dart';
+import 'package:provider/provider.dart';
 import 'package:shopkeeper_part/core/widgets/custom%20widgets/bottom_navbar.dart';
+import 'package:shopkeeper_part/core/widgets/custom%20widgets/primary_appbar.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/widgets/inventory widgets/offer_slider.dart';
+import '../../../core/widgets/inventory widgets/vegetable_grid.dart';
+import '../../../providers/vegetable_provider.dart';
 
-class ShopkeeperHomepage extends StatefulWidget {
+class ShopkeeperHomepage extends StatelessWidget {
   const ShopkeeperHomepage({super.key});
 
   @override
-  State<ShopkeeperHomepage> createState() => _ShopkeeperHomepageState();
-}
-
-class _ShopkeeperHomepageState extends State<ShopkeeperHomepage> {
-  @override
   Widget build(BuildContext context) {
+    final vegetableProvider = Provider.of<VegetableProvider>(context);
+
+    // Trigger the fetchVegetables() on first build
+    if (vegetableProvider.vegetables.isEmpty && !vegetableProvider.isLoading) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        vegetableProvider.fetchVegetables();
+      });
+    }
+
     return Scaffold(
-      appBar: PrimaryAppBar(onSetupTap: () { },),
-      bottomNavigationBar: BottomNavbar(),
+      appBar: PrimaryAppBar(onSetupTap: () {}),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Offer Slider
+              const OfferSlider(
+                offers: [
+                  {
+                    "title": "Up to 30% offer",
+                    "subtitle": "Enjoy our big offer",
+                    "image": "assets/images/offer1.png",
+                  },
+                  {
+                    "title": "Buy 1 Get 1 Free",
+                    "subtitle": "On select items!",
+                    "image": "assets/images/offer2.png",
+                  },
+                ],
+              ),
+              const SizedBox(height: 16.0),
+
+              // Vegetables Title
+              Text(
+                "Vegetables",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 16.0),
+
+              // Show vegetable grid or error message if any
+              vegetableProvider.errorMessage != null
+                  ? Center(
+                child: Text(
+                  vegetableProvider.errorMessage!,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              )
+                  : VegetableGrid(vegetables: vegetableProvider.vegetables),
+            ],
+          ),
+        ),
+      ),
+      // Basket Button (FAB)
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/basket');
+        },
+        backgroundColor: AppColors.primary,
+        child: const Icon(Icons.shopping_basket_outlined),
+      ),
+      bottomNavigationBar: const BottomNavbar(),
     );
   }
 }

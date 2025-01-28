@@ -30,7 +30,7 @@ class LongButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color: AppColors.background, // Ensures text is visible on primary background
           ),
         ),

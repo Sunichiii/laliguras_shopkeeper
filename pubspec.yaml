@@ -12,8 +12,6 @@ dependencies:
   provider:
   cupertino_icons: ^1.0.8
   flutter_map: ^5.0.0
-  latlong2: ^0.9.0
-  geolocator: ^10.1.0
   flutter_map_location_marker: ^7.0.0
   http: ^1.1.0
   smooth_page_indicator:
@@ -26,9 +24,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   # - assets/email_components/
     - assets/icons/
     - assets/fonts/
+    - assets/images/
+    - assets/vegetables/
   fonts:
     - family: Poppins
       fonts:

@@ -6,10 +6,10 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onSetupTap;
 
   const PrimaryAppBar({
-    Key? key,
+    super.key,
     this.showWarningIcon = false,
     required this.onSetupTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +42,8 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              'Setup me first',
-              style: Theme.of(context).textTheme.titleMedium,
+              'Set me up first',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: AppColors.background),
             ),
           ),
         ),
@@ -60,5 +60,6 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(57); // AppBar height + divider
+  Size get preferredSize =>
+      const Size.fromHeight(57); // AppBar height + divider
 }
